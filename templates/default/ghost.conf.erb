@@ -1,0 +1,12 @@
+upstream ghost-blog {
+  server <%= @app['upstream']['host'] %>:<%= @app['upstream']['port'] %>;
+}
+
+server {
+  listen 80;
+  server_name <%= @app['hostnames'] %>;
+  access_log  /var/log/nginx/<%= @app['name'] %>.access.log;
+  location / {
+    proxy_pass http://ghost-blog;
+  }
+}

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+exec 2>&1
+
+echo 'Changing to Ghost release path: <%= @options['release_path'] %>'
+cd <%= @options['release_path'] %>
+
+exec chpst -u <%= @options['user'] %> -U <%= @options['user'] %> env \
+  NODE_ENV=production \
+  node index

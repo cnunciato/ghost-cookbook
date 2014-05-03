@@ -1,0 +1,23 @@
+var path = require('path'),
+    config;
+
+config = {
+    production: {
+        url: '<%= @url %>',
+        mail: <%= @mail.to_json %>,
+        database: {
+            client: 'sqlite3',
+            connection: {
+                filename: path.join(__dirname, '/content/data/ghost.db')
+            },
+            debug: false
+        },
+        server: {
+            host: '<%= @server['host'] %>',
+            port: '<%= @server['port'] %>'
+        }
+    }
+   
+};
+
+module.exports = config;
