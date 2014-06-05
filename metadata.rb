@@ -3,7 +3,7 @@ maintainer       'Christian Nunciato'
 maintainer_email 'chris@nunciato.org'
 license          'Apache 2.0'
 description      'Installs and configures a Ghost blog'
-version          '0.1.0'
+version          '0.1.1'
 
 supports 'ubuntu', '>= 12.04'
 supports 'centos', '>= 6.5'

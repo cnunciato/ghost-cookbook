@@ -1,3 +1,7 @@
+# 0.1.1
+
+  * Enable submodule support for content repos
+
 # 0.1.0
 
 ## Initial Release

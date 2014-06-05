@@ -131,6 +131,7 @@ if content_remote
     repository remote_repo
     revision remote_revision
     ssh_wrapper wrapper_path
+    enable_submodules true
     only_if { remote_repo }
     notifies :run, 'execute[copy-remote-content]', :immediately
   end
