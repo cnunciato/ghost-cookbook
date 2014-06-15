@@ -6,7 +6,7 @@ A [Chef](http://getchef.com/) cookbook for building and managing a [Ghost blog](
 
   * Easily install new versions of Ghost by setting a version number in an attribute
   * Optionally merge with your own public or private Git repository to incorporate themes or customizations
-  * Use [SQLite](http://sqlite.org/) as the database
+  * Keep it simple with [SQLite](http://sqlite.org/) as the database
   * Use [Test Kitchen](http://kitchen.ci/) and [ServerSpec](http://serverspec.org/) for BDD awesomeness
 
 ## Supported Platforms
@@ -16,7 +16,7 @@ A [Chef](http://getchef.com/) cookbook for building and managing a [Ghost blog](
 
 ## Overview
 
-[Ghost](http://docs.ghost.org/) is a great little blog engine, but it's not the easiest thing to work with if you're a Web developer into configuration management.  Installing new versions [is a pain](http://docs.ghost.org/installation/upgrading/), there's no great way to customize a theme (other than working over FTP and keeping your fingers crossed), and it doesn't suggest much of a workflow for keeping your site under revision control.  This cookbook aims to fix all that by letting you work locally, test locally, commit to Github and use Chef to bring everything together, deploy and manage it.
+[Ghost](http://docs.ghost.org/) is a great little blog engine, but it's not the easiest thing to work with if you're a Web developer into configuration management.  Installing new versions [is a pain](http://docs.ghost.org/installation/upgrading/), there's no great way to customize a theme, and it doesn't suggest much of a workflow for keeping your site under revision control.  This cookbook aims to fix all that by letting you work locally, test locally, commit to Github and use Chef to bring everything together, deploy and manage it.
 
 ### Assumptions
 
@@ -57,7 +57,7 @@ Use the ``ghost-blog`` role (see ``test/integration/roles/ghost-blog.json`` for 
       ]
     }
 
-If you'd like to be able to develop locally and keep your changes under revision control, you'll need to [download and install Ghost](http://docs.ghost.org/installation/), create a repository from that, commit your changes and push to your remote, and then specify that remote as an override attribute &mdash; e.g., by modifying the ``ghost-blog`` role from above:
+If you'd like to be able to develop locally and keep your changes under revision control, you'll need to [download and install Ghost](https://ghost.org/download/), create a repository from that, commit your changes and push to your remote, and then specify that remote as an override attribute &mdash; e.g., by modifying the ``ghost-blog`` role from above:
 
     {
       "name": "ghost-blog",

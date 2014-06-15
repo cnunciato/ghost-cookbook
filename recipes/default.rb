@@ -20,10 +20,11 @@
 include_recipe 'apt'
 include_recipe 'build-essential'
 include_recipe 'git'
-include_recipe 'nodejs::install_from_binary'
 include_recipe 'sqlite'
 include_recipe 'runit'
 include_recipe 'chef-vault'
+include_recipe 'nodejs'
+include_recipe 'nodejs::npm'
 
 package 'unzip'
 
@@ -34,7 +35,8 @@ install_path = node['ghost']['path']
 content_remote = node['ghost']['remote']
 
 deploy_key = begin
-  chef_vault_item('vault', 'secrets')['ghost']['deploy-key']
+  deploy_key_name = node['ghost']['app']['deploy_key_name']
+  chef_vault_item('vault', 'secrets')['ghost']['deploy-keys'][deploy_key_name]
 rescue
   nil
 end
