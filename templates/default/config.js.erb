@@ -6,9 +6,17 @@ config = {
         url: '<%= @url %>',
         mail: <%= @mail.to_json %>,
         database: {
-            client: 'sqlite3',
+            client: '<%= @database.type %>',
             connection: {
+                <% if @database['type'] == "sqlite" then %>
                 filename: path.join(__dirname, '/content/data/ghost.db')
+                <% else %>
+                host: '<%= @database['host'] %>',
+                user: '<%= @database['user'] %>',
+                password: '<%= @database['password'] %>',
+                database: '<%= @database['name'] %>',
+                charset: 'utf8'
+                <% end %>
             },
             debug: false
         },
@@ -17,7 +25,7 @@ config = {
             port: '<%= @server['port'] %>'
         }
     }
-   
+
 };
 
 module.exports = config;
