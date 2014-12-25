@@ -8,14 +8,14 @@ mysql_service 'ghost' do
 end
 
 mysql_client 'ghost' do
-  version '5.6'
+  version mysql[:version]
   action :create
 end
 
 mysql_config 'ghost' do
     notifies :restart, 'mysql_service[ghost]'
     action :create
-    version '5.6'
+    version mysql[:version]
     source 'ghost-mysql.cnf.erb'
     variables mysql
 end

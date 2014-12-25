@@ -50,6 +50,7 @@ node.default['ghost']['app']['database']['name'] = 'ghost'
 node.override['nginx']['default_site_enabled'] = false
 
 # MySQL Password
+node.default['ghost']['mysql']['version'] = '5.6'
 node.default['ghost']['mysql']['password'] = node.default['ghost']['app']['database']['password']
 node.default['ghost']['mysql']['charset'] = "utf8"
 node.default['ghost']['mysql']['port'] = "3306"
