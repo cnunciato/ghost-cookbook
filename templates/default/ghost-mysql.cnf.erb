@@ -1,0 +1,51 @@
+# Chef generated my.cnf for instance mysql-ghost
+
+[client]
+<% if @charset %>
+default-character-set          = <%= @charset %>
+<% end %>
+<% if @port %>
+port                           = <%= @port %>
+<% end %>
+<% if @socket_file %>
+socket                         = <%= @socket_file %>
+<% end %>
+
+[mysql]
+<% if @charset %>
+default-character-set          = <%= @charset %>
+<% end %>
+
+[mysqld]
+<% if @run_user %>
+user                           = <%= @run_user %>
+<% end %>
+<% if @pid_file %>
+pid-file                       = <%= @pid_file %>
+<% end %>
+<% if @socket_file %>
+socket                         = <%= @socket_file %>
+<% end %>
+<% if @bind_address %>
+bind-address                   = <%= @bind_address %>
+<% end %>
+<% if @port %>
+port                           = <%= @port %>
+<% end %>
+<% if @parsed_data_dir %>
+datadir                        = <%= @parsed_data_dir %>
+<% end %>
+<% if @tmp_dir %>
+tmpdir                         = <%= @tmp_dir %>
+<% end %>
+<% if @error_log %>
+log-error                      = <%= @error_log %>
+<% end %>
+<% if @include_dir %>
+!includedir <%= @include_dir %>
+<% end %>
+
+[mysqld_safe]
+<% if @socket_file %>
+socket                         = <%= @socket_file %>
+<% end %>

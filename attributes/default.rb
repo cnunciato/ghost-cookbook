@@ -33,9 +33,29 @@ node.default['ghost']['app']['url'] = 'http://0.0.0.0'
 node.default['ghost']['app']['server']['host'] = '0.0.0.0'
 node.default['ghost']['app']['server']['hostnames'] = 'localhost'
 node.default['ghost']['app']['server']['port'] = 2368
+node.default['ghost']['app']['path']
 
 # Mail settings
 node.default['ghost']['app']['mail'] = {}
 
+# database setting
+node.default['ghost']['app']['database']['type'] = "sqlite"
+node.default['ghost']['app']['database']['host'] = '127.0.0.1'
+node.default['ghost']['app']['database']['user'] = 'root'
+node.default['ghost']['app']['database']['password'] = 'root'
+node.default['ghost']['app']['database']['name'] = 'ghost'
+
+
 # Nginx overrides
 node.override['nginx']['default_site_enabled'] = false
+
+# MySQL Password
+node.default['ghost']['mysql']['password'] = node.default['ghost']['app']['database']['password']
+node.default['ghost']['mysql']['charset'] = "utf8"
+node.default['ghost']['mysql']['port'] = "3306"
+node.default['ghost']['mysql']['pid_file'] = "/run/mysql-default/ghost-mysqld.pid"
+node.default['ghost']['mysql']['socket_file'] = "/run/mysql-default/ghost-mysqld.sock"
+node.default['ghost']['mysql']['run_user'] = "mysql"
+node.default['ghost']['mysql']['parsed_data_dir'] = '/var/lib/mysql-ghost'
+node.default['ghost']['mysql']['tmp_dir'] = '/tmp'
+node.default['ghost']['mysql']['error_log'] = ' /var/log/mysql-ghost/error.log'
