@@ -20,7 +20,7 @@
 include_recipe 'apt'
 include_recipe 'build-essential'
 include_recipe 'git'
-include_recipe 'nodejs::install_from_binary'
+include_recipe 'nodejs'
 include_recipe 'sqlite'
 include_recipe 'runit'
 include_recipe 'chef-vault'
@@ -99,7 +99,7 @@ link 'shared-content' do
   owner user['name']
   group group['name']
   action :nothing
-  notifies :run, 'execute[npm-install]', :immediately
+  notifies :install, 'nodejs_npm[packages.json]', :immediately
 end
 
 if content_remote
@@ -126,7 +126,7 @@ if content_remote
       mode 0770
     end
   end
-  
+
   git remote_destination do
     repository remote_repo
     revision remote_revision
@@ -146,13 +146,12 @@ if content_remote
 
 end
 
-execute 'npm-install' do
-  cwd this_release_path
+nodejs_npm 'packages.json' do
+  json true
+  path this_release_path
   user user['name']
   group group['name']
-  environment({ 'HOME' => user['home'] })
-  command "npm install --production"
-  action :nothing
+  options ['--production']
   notifies :restart, 'service[ghost]', :delayed
 end
 
