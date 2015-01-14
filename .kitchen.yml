@@ -12,6 +12,8 @@ platforms:
       box: opscode-ubuntu-12.04
       network:
         - ['private_network', { ip: '33.33.33.133' }]
+  - name: ubuntu-14.04
+  - name: centos-6.6
 
 suites:
   - name: default

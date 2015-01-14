@@ -1,3 +1,8 @@
+# 0.1.2
+
+  * Add Ubuntu 14.04 support
+  * Update cookbook to use latest version of nodejs cookbook.
+
 # 0.1.1
 
   * Enable submodule support for content repos

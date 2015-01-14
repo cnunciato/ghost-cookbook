@@ -39,3 +39,6 @@ node.default['ghost']['app']['mail'] = {}
 
 # Nginx overrides
 node.override['nginx']['default_site_enabled'] = false
+
+# Nodejs install method
+node.override['nodejs']['install_method'] = 'binary'
