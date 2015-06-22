@@ -24,7 +24,6 @@ include_recipe 'sqlite'
 include_recipe 'runit'
 include_recipe 'chef-vault'
 include_recipe 'nodejs'
-include_recipe 'nodejs::npm'
 
 package 'unzip'
 
@@ -104,6 +103,11 @@ link 'shared-content' do
   notifies :run, 'execute[npm-install]', :immediately
 end
 
+runit_service 'ghost' do
+  default_logger true
+  options({ 'release_path' => this_release_path, 'user' => user['name'] })
+end
+
 if content_remote
   remote_repo = content_remote['repo']
   remote_revision = content_remote['revision'] || 'master'
@@ -163,9 +167,4 @@ template 'config' do
   path "#{this_release_path}/config.js"
   variables node['ghost']['app']
   notifies :restart, 'service[ghost]', :delayed
-end
-
-runit_service 'ghost' do
-  default_logger true
-  options({ 'release_path' => this_release_path, 'user' => user['name'] })
 end

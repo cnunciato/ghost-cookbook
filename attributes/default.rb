@@ -23,13 +23,6 @@ node.default['ghost']['user']['home'] = '/home/ghost'
 node.default['ghost']['user']['shell'] = '/bin/bash'
 node.default['ghost']['group']['name'] = 'ghost'
 
-# Node.js and NPM settings
-node.override['nodejs']['npm']['install_method'] = 'source'
-node.override['nodejs']['npm'] = '2.5.0'
-node.default['nodejs']['install_method'] = 'binary'
-node.default['nodejs']['version'] = '0.10.29'
-node.default['nodejs']['binary']['checksum'] = '5f41f4a90861bddaea92addc5dfba5357de40962031c2281b1683277a0f75932'
-
 # App server settings
 node.default['ghost']['version'] = '0.6.4'
 node.default['ghost']['path'] = '/srv/ghost'
